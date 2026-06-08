@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sách</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo"><h1>📚 Bán Sách Lịch Sử Việt Nam</h1></div>
+                    <ul class="nav-menu">
+                        <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+                        <li><a href="san-pham.html" class="nav-link">Sản phẩm</a></li>
+                        <li><a href="gioi-thieu.html" class="nav-link">Giới thiệu</a></li>
+                        <li><a href="lien-he.html" class="nav-link">Liên hệ</a></li>
+                    </ul>
+                    <div class="header-actions">
+                        <div class="search-box"><input type="text" id="searchInput" placeholder="Tìm kiếm sách..."><button onclick="searchBooks()">🔍</button></div>
+                        <div class="cart-icon"><span id="cartCount" class="cart-badge">0</span><button onclick="showCart()">🛒</button></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <a href="san-pham.html" class="btn-secondary" style="margin-bottom:1rem; display:inline-block;">← Quay về danh sách</a>
+
+            <div id="bookDetailPage" class="book-detail" style="margin-top:1rem;"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom"><p>&copy; 2024 Bán Sách Lịch Sử Việt Nam. Tất cả quyền được bảo lưu.</p></div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Render a full detail page using existing data from script.js
+        function renderDetailPage(bookId) {
+            const book = books.find(b => b.id === bookId) || books[0];
+            const imageMarkup = book.imageUrl ? `<img src="${resolveImagePath(book.imageUrl)}" alt="${book.title} cover">` : book.image || '';
+
+            const html = `
+                <div class="book-detail-image">${imageMarkup}</div>
+                <div class="book-detail-info">
+                    <h2>${book.title}</h2>
+                    <p class="book-detail-author">Tác giả: ${book.author}</p>
+                    <div>
+                        <span class="book-detail-price">${book.price.toLocaleString()} VND</span>
+                        ${book.oldPrice ? `<span class="book-detail-old-price">${book.oldPrice.toLocaleString()} VND</span>` : ''}
+                    </div>
+                    <div class="book-detail-rating"><span class="star">★</span> ${book.rating}/5</div>
+                    <p class="book-detail-description">${book.description}</p>
+
+                    <div class="book-detail-specs">
+                        <div class="spec-item"><span class="spec-label">Nhà xuất bản</span><span class="spec-value">${book.publisher || ''}</span></div>
+                        <div class="spec-item"><span class="spec-label">Năm xuất bản</span><span class="spec-value">${book.year || ''}</span></div>
+                        <div class="spec-item"><span class="spec-label">Số trang</span><span class="spec-value">${book.pages || ''}</span></div>
+                        <div class="spec-item"><span class="spec-label">Danh mục</span><span class="spec-value">${book.category || ''}</span></div>
+                    </div>
+
+                    <div class="quantity-selector">
+                        <label>Số lượng:</label>
+                        <input type="number" id="quantityInputPage" value="1" min="1" max="10">
+                    </div>
+
+                    <div style="display:flex; gap:0.8rem; align-items:center;">
+                        <button class="btn-primary" onclick="(function(){ const q=parseInt(document.getElementById('quantityInputPage').value)||1; const existing=cart.find(i=>i.id===${book.id}); if(existing){ existing.quantity+=q;}else{ cart.push({id:${book.id}, title:'${book.title.replace(/'/g,"\\'")}', price:${book.price}, quantity:q, image:'${book.image || ''}'}); } saveCart(); updateCart(); showNotification('${book.title} đã được thêm vào giỏ hàng!', 'success'); })()">🛒 Thêm vào giỏ hàng</button>
+                        <a href="san-pham.html" class="btn-secondary">Tiếp tục mua</a>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('bookDetailPage').innerHTML = html;
+        }
+
+        // read id from query param ?id=
+        document.addEventListener('DOMContentLoaded', function(){
+            const params = new URLSearchParams(location.search);
+            const id = Number(params.get('id')) || 1;
+            renderDetailPage(id);
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>

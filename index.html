@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bán Sách Lịch Sử Việt Nam</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <h1>📚 Bán Sách Lịch Sử Việt Nam</h1>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="#" data-section="home" onclick="showSection('home')" class="nav-link active">Trang chủ</a></li>
+                        <li><a href="#" data-section="products" onclick="showSection('products')" class="nav-link">Sản phẩm</a></li>
+                        <li><a href="#" data-section="about" onclick="showSection('about')" class="nav-link">Giới thiệu</a></li>
+                        <li><a href="#" data-section="contact" onclick="showSection('contact')" class="nav-link">Liên hệ</a></li>
+                        <li><a href="html/dang-ky.html" class="nav-link">Đăng ký</a></li>
+                    </ul>
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Tìm kiếm sách...">
+                            <button onclick="searchBooks()">🔍</button>
+                        </div>
+                        <div class="cart-icon">
+                            <span id="cartCount" class="cart-badge">0</span>
+                            <button onclick="showCart()">🛒</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="hero">
+                    <h2>Chào mừng đến với Bán Sách Lịch Sử Việt Nam</h2>
+                    <p>Khám phá bộ sưu tập sách phong phú với giá cả hợp lý</p>
+                    <button onclick="showSection('products')" class="btn-primary">Xem sách</button>
+                </div>
+
+                <!-- Featured Books -->
+                <div class="featured-section">
+                    <h3>📖 Sách nổi bật</h3>
+                    <div id="featuredBooks" class="books-grid"></div>
+                </div>
+
+
+            </section>
+
+            <!-- Products Section -->
+            <section id="products" class="section">
+                <div class="products-header">
+                    <h2>Danh sách sách</h2>
+                    <div class="filter-controls">
+                        <select id="categoryFilter" onchange="filterBooks()">
+                            <option value="">Tất cả danh mục</option>
+                            <option value="Lịch sử cổ đại">Lịch sử cổ đại</option>
+                            <option value="Lịch sử cách mạng">Lịch sử cách mạng</option>
+                            <option value="Lịch sử hiện đại">Lịch sử hiện đại</option>
+                            <option value="Tiểu sử lịch sử">Tiểu sử lịch sử</option>
+                            <option value="Văn hóa - Lịch sử">Văn hóa - Lịch sử</option>
+                        </select>
+                        <select id="sortFilter" onchange="filterBooks()">
+                            <option value="">Sắp xếp</option>
+                            <option value="pricelow">Giá thấp đến cao</option>
+                            <option value="pricehigh">Giá cao đến thấp</option>
+                            <option value="newest">Mới nhất</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="productsList" class="books-grid"></div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="section">
+                <div class="about-content">
+                            <h2>Về Bán Sách Lịch Sử Việt Nam</h2>
+
+                            <p>
+                                Lịch sử Việt Nam là hành trình dựng nước và giữ nước kéo dài hàng nghìn năm với biết bao chiến công, dấu mốc và giá trị văn hóa đặc sắc. Những cuốn sách lịch sử không chỉ tái hiện các sự kiện quan trọng của dân tộc mà còn giúp người đọc hiểu sâu hơn về truyền thống yêu nước, tinh thần đoàn kết và bản sắc văn hóa Việt Nam.
+                            </p>
+
+                            <p>
+                                Từ thời kỳ Văn Lang – Âu Lạc, các triều đại phong kiến, những cuộc kháng chiến chống ngoại xâm cho đến các giai đoạn đấu tranh giành độc lập và xây dựng đất nước, mỗi cuốn sách đều mang đến những góc nhìn chân thực và giá trị về quá khứ. Đây là nguồn tư liệu quý dành cho học sinh, sinh viên, nhà nghiên cứu cũng như những ai yêu thích tìm hiểu lịch sử dân tộc.
+                            </p>
+
+                            <p>
+                                Thông qua việc đọc sách lịch sử, độc giả không chỉ tiếp cận tri thức mà còn thêm tự hào về truyền thống vẻ vang của dân tộc Việt Nam, từ đó nâng cao ý thức gìn giữ và phát huy các giá trị văn hóa, lịch sử cho các thế hệ mai sau.
+                            </p>
+
+                            <h3>Một số chủ đề nổi bật</h3>
+                            <ul class="about-topics">
+                                <li>Hồ Chí Minh - Lãnh tụ vĩ đại</li>
+                                <li>Văn hóa Việt Nam qua các thời kỳ</li>
+                                <li>Nhân dân Việt Nam trong cuộc kháng chiến</li>
+                                <li>Đường Hồ Chí Minh - Tuyến đường anh hùng</li>
+                            </ul>
+
+                    
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <div class="contact-content">
+                    <h2>Liên hệ chúng tôi</h2>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-form">
+                            <h3>Gửi thông báo cho chúng tôi</h3>
+                            <form onsubmit="submitContact(event)">
+                                <div class="form-group">
+                                    <label>Tên của bạn</label>
+                                    <input type="text" id="contactName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="contactEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Chủ đề</label>
+                                    <input type="text" id="contactSubject" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nội dung</label>
+                                    <textarea id="contactMessage" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary">Gửi</button>
+                            </form>
+                        </div>
+
+                        <div class="contact-info">
+                            <h3>Thông tin liên hệ</h3>
+                            <div class="info-item">
+                                <h4>📍 Địa chỉ</h4>
+                                <p>123 Đường Sách, Vĩnh Long , Việt Nam</p>
+                            </div>
+                            <div class="info-item">
+                                <h4>📞 Điện thoại</h4>
+                                <p>0343139557</p>
+                            </div>
+                            <div class="info-item">
+                                <h4>📧 Email</h4>
+                                <p>khoidangkhoi1@gmail.com</p>
+                            </div>
+                            <div class="info-item">
+                                <h4>⏰ Giờ làm việc</h4>
+                                <p>Thứ 2 - Thứ 7: 8:00 - 17:00<br>Chủ nhật: 9:00 - 15:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <aside id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Giỏ hàng</h3>
+            <button onclick="closeCart()" class="close-btn">✕</button>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <p class="empty-cart">Giỏ hàng trống</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Tổng tiền:</strong>
+                <span id="cartTotal">0 VND</span>
+            </div>
+            <button onclick="checkout()" class="btn-primary">Thanh toán</button>
+        </div>
+    </aside>
+
+    <!-- Book Detail Modal -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <button onclick="closeBookModal()" class="close-btn">✕</button>
+            <div id="bookDetail" class="book-detail">
+                <!-- Book details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Bán Sách Lịch Sử Việt Nam</h4>
+                    <p>Cửa hàng bán sách lịch sử Việt Nam trực tuyến</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên kết nhanh</h4>
+                    <ul>
+                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="#">Sản phẩm</a></li>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên hệ chúng tôi</h4>
+                    <ul>
+                        <li><strong>📍 Địa chỉ:</strong> 123 Đường Sách, Vĩnh Long , Việt Nam</li>
+                        <li><strong>📞 Điện thoại:</strong> 0343139557</li>
+                        <li><strong>📧 Email:</strong> khoidangkhoi1@gmail.com</li>
+                        <li><strong>⏰ Giờ làm:</strong> T2-T7: 8:00-17:00</li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bán Sách Lịch Sử Việt Nam. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
