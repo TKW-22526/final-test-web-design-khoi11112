@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sản phẩm - Bán Sách Lịch Sử Việt Nam</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+	<header class="header">
+		<nav class="navbar">
+			<div class="container">
+				<div class="nav-wrapper">
+					<div class="logo">
+						<h1>📚 Bán Sách Lịch Sử Việt Nam</h1>
+					</div>
+					<ul class="nav-menu">
+						<li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+						<li><a href="san-pham.html" class="nav-link active">Sản phẩm</a></li>
+						<li><a href="gioi-thieu.html" class="nav-link">Giới thiệu</a></li>
+						<li><a href="lien-he.html" class="nav-link">Liên hệ</a></li>
+					</ul>
+					<div class="header-actions">
+						<div class="search-box">
+							<input type="text" id="searchInput" placeholder="Tìm kiếm sách...">
+							<button onclick="searchBooks()">🔍</button>
+						</div>
+						<div class="cart-icon">
+							<span id="cartCount" class="cart-badge">0</span>
+							<button onclick="showCart()">🛒</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="container">
+			<!-- Featured placeholder (script expects it) -->
+			<div id="featuredBooks" style="display:none"></div>
+
+			<!-- Products Section -->
+			<section id="products" class="section active">
+				<div class="products-header">
+					<h2>Danh sách sách</h2>
+					<div class="filter-controls">
+						<select id="categoryFilter" onchange="filterBooks()">
+							<option value="">Tất cả danh mục</option>
+							<option value="Lịch sử cổ đại">Lịch sử cổ đại</option>
+							<option value="Lịch sử cách mạng">Lịch sử cách mạng</option>
+							<option value="Lịch sử hiện đại">Lịch sử hiện đại</option>
+							<option value="Tiểu sử lịch sử">Tiểu sử lịch sử</option>
+							<option value="Văn hóa - Lịch sử">Văn hóa - Lịch sử</option>
+						</select>
+						<select id="sortFilter" onchange="filterBooks()">
+							<option value="">Sắp xếp</option>
+							<option value="pricelow">Giá thấp đến cao</option>
+							<option value="pricehigh">Giá cao đến thấp</option>
+							<option value="newest">Mới nhất</option>
+						</select>
+					</div>
+				</div>
+				<div id="productsList" class="books-grid"></div>
+			</section>
+		</div>
+	</main>
+
+	<!-- Cart Sidebar (required by script) -->
+	<aside id="cartSidebar" class="cart-sidebar">
+		<div class="cart-header">
+			<h3>Giỏ hàng</h3>
+			<button onclick="closeCart()" class="close-btn">✕</button>
+		</div>
+		<div id="cartItems" class="cart-items">
+			<p class="empty-cart">Giỏ hàng trống</p>
+		</div>
+		<div class="cart-footer">
+			<div class="cart-total">
+				<strong>Tổng tiền:</strong>
+				<span id="cartTotal">0 VND</span>
+			</div>
+			<button onclick="checkout()" class="btn-primary">Thanh toán</button>
+		</div>
+	</aside>
+
+	<!-- Book Detail Modal -->
+	<div id="bookModal" class="modal">
+		<div class="modal-content">
+			<button onclick="closeBookModal()" class="close-btn">✕</button>
+			<div id="bookDetail" class="book-detail"></div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="footer-content">
+				<div class="footer-section">
+					<h4>Bán Sách Lịch Sử Việt Nam</h4>
+					<p>Cửa hàng bán sách lịch sử Việt Nam trực tuyến</p>
+				</div>
+				<div class="footer-section">
+					<h4>Liên kết nhanh</h4>
+					<ul>
+						<li><a href="../index.html">Trang chủ</a></li>
+						<li><a href="san-pham.html">Sản phẩm</a></li>
+						<li><a href="gioi-thieu.html">Giới thiệu</a></li>
+						<li><a href="lien-he.html">Liên hệ</a></li>
+					</ul>
+				</div>
+				<div class="footer-section">
+					<h4>Liên hệ chúng tôi</h4>
+					<ul>
+						<li><strong>📍 Địa chỉ:</strong> 123 Đường Sách, Vĩnh Long , Việt Nam</li>
+						<li><strong>📞 Điện thoại:</strong> 0343139557</li>
+						<li><strong>📧 Email:</strong> khoidangkhoi1@gmail.com</li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>&copy; 2024 Bán Sách Lịch Sử Việt Nam. Tất cả quyền được bảo lưu.</p>
+			</div>
+		</div>
+	</footer>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
